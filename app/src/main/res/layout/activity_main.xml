@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+		<variable
+			name="viewModel"
+			type="com.s2labs.shreemagnetfota.viewmodel.DeviceListViewModel" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".MainActivity">
+
+		<TextView
+			android:id="@+id/deviceListHeadingTV"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="10dp"
+			android:text="PAIRED DEVICES"
+			android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+			android:textColor="?colorPrimary"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:text="@={viewModel.search}"
+			android:id="@+id/searchET"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="16dp"
+			android:drawableStart="@drawable/ic_outline_filter_alt_24"
+			android:drawablePadding="10dp"
+			android:hint="Filter"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/deviceListHeadingTV" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/deviceListRV"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginTop="10dp"
+			android:clipToPadding="false"
+			android:paddingVertical="10dp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/searchET"
+			tools:listitem="@layout/bluetooth_device_item" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
